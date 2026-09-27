@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Rapi Coiffure — Barbier</title>
+    <meta name="description" content="Rapi Coiffure — coupes, dégradés et barbe. Réservez votre rendez-vous en ligne avec votre barbier.">
+    <meta name="theme-color" content="#363636">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fonts: Bebas Neue (titles, like "COIFFURE" in the logo) + Cormorant Garamond (text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======================= ICONS (used with <svg><use href="#i-..."/></svg>) ======================= -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+        <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></symbol>
+        <symbol id="i-clipper" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="15" rx="3"/><path d="M7 7V4h10v3M9 4V2M11 4V2M13 4V2M15 4V2M10 12h4"/></symbol>
+        <symbol id="i-razor" viewBox="0 0 24 24"><path d="M3 13.5 13.5 3 17 6.5 6.5 17z"/><path d="m6.5 17 4.5 4.5 2-2-4.5-4.5"/></symbol>
+        <symbol id="i-beard" viewBox="0 0 24 24"><path d="M5 8v4a7 7 0 0 0 14 0V8"/><path d="M9 13c1.5-1 4.5-1 6 0M10 17h4"/></symbol>
+        <symbol id="i-comb" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="4" rx="1"/><path d="M5 11v6M8 11v6M11 11v6M14 11v6M17 11v6M20 11v4"/></symbol>
+        <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+        <symbol id="i-child" viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><path d="M12 9v6M8 11.5l4-1 4 1M10 21l2-6 2 6"/></symbol>
+        <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 3 2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4l-5.3 3 1.2-6-4.5-4.1 6-.7z"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.8-.3 1.6c-3.8.3-7.5-3.4-7.2-7.2l1.6-.3.8 1.8z"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></symbol>
+        <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z"/></symbol>
+        <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.5"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+        <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+        <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    </defs>
+</svg>
+
+<!-- ======================= NAVIGATION ======================= -->
+<header class="nav" id="nav">
+    <div class="nav__inner">
+        <a href="#home" class="nav__brand" aria-label="Rapi Coiffure">
+            <img src="logo-wordmark.png" alt="Rapi Coiffure" width="327" height="194">
+        </a>
+
+        <nav class="nav__menu" id="navMenu" aria-label="Menu">
+            <ul class="nav__links">
+                <li><a href="#home" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+                <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                <li><a href="#barbers" data-i18n="nav.barbers">Nos barbiers</a></li>
+                <li><a href="#gallery" data-i18n="nav.gallery">Galerie</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <a href="#booking" class="btn btn--gold nav__book" data-i18n="nav.book">Réserver</a>
+        </nav>
+
+        <div class="nav__tools">
+            <div class="lang" role="group" data-i18n-aria="nav.language" aria-label="Langue">
+                <button type="button" class="lang__btn" data-lang="fr">FR</button>
+                <button type="button" class="lang__btn" data-lang="en">EN</button>
+            </div>
+            <a href="#booking" class="btn btn--gold btn--sm nav__book-m" data-i18n="nav.book">Réserver</a>
+            <button type="button" class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navMenu" data-i18n-aria="nav.openMenu" aria-label="Ouvrir le menu">
+                <svg class="icon"><use href="#i-menu"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="home">
+    <div class="hero__inner">
+        <div class="hero__crest">
+            <img src="logo-full.png" alt="Rapi Coiffure" width="631" height="550">
+            <span class="hero__sheen" aria-hidden="true"></span>
+        </div>
+        <h1 class="hero__title" data-i18n-html="hero.title">Votre style.<br>Notre savoir-faire.</h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle"></p>
+        <div class="hero__actions">
+            <a href="#booking" class="btn btn--gold btn--lg" data-i18n="hero.ctaBook">Prendre rendez-vous</a>
+            <a href="#services" class="btn btn--ghost btn--lg" data-i18n="hero.ctaServices">Découvrir nos services</a>
+        </div>
+    </div>
+
+    <dl class="hero__facts">
+        <div>
+            <dt data-i18n="hero.factHours"></dt>
+            <dd id="heroHours">09:00 – 19:00</dd>
+        </div>
+        <div>
+            <dt data-i18n="hero.factBarbers"></dt>
+            <dd data-i18n="hero.factBarbersValue"></dd>
+        </div>
+        <div>
+            <dt data-i18n="hero.factConfirm"></dt>
+            <dd data-i18n="hero.factConfirmValue"></dd>
+        </div>
+    </dl>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="section about" id="about">
+    <div class="container about__grid">
+        <figure class="about__media reveal">
+            <div class="frame frame--arch" data-fallback="pole">
+                <img id="aboutImage" alt="" loading="lazy">
+            </div>
+        </figure>
+        <div class="about__text reveal">
+            <h2 class="title" data-i18n="about.title">À propos</h2>
+            <p class="lead" data-i18n="about.lead"></p>
+            <p data-i18n="about.p1"></p>
+            <p data-i18n="about.p2"></p>
+            <ul class="about__points">
+                <li>
+                    <svg class="icon"><use href="#i-scissors"/></svg>
+                    <div><strong data-i18n="about.point1"></strong><span data-i18n="about.point1Text"></span></div>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-razor"/></svg>
+                    <div><strong data-i18n="about.point2"></strong><span data-i18n="about.point2Text"></span></div>
+                </li>
+                <li>
+                    <svg class="icon"><use href="#i-sparkle"/></svg>
+                    <div><strong data-i18n="about.point3"></strong><span data-i18n="about.point3Text"></span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= SERVICES (filled from js/config.js) ======================= -->
+<section class="section section--deep services" id="services">
+    <div class="container">
+        <header class="section__head reveal">
+            <h2 class="title" data-i18n="services.title">Services & tarifs</h2>
+            <p class="section__intro" data-i18n="services.intro"></p>
+        </header>
+        <ul class="price-board reveal" id="servicesList"></ul>
+    </div>
+</section>
+
+<!-- ======================= BARBERS (filled from js/config.js) ======================= -->
+<section class="section barbers" id="barbers">
+    <div class="container">
+        <header class="section__head reveal">
+            <h2 class="title" data-i18n="barbers.title">Nos barbiers</h2>
+            <p class="section__intro" data-i18n="barbers.intro"></p>
+        </header>
+        <div class="barber-grid reveal" id="barbersList"></div>
+    </div>
+</section>
+
+<!-- ======================= BOOKING ======================= -->
+<section class="section section--deep booking" id="booking">
+    <div class="container container--narrow">
+        <header class="section__head section__head--center reveal">
+            <h2 class="title title--center" data-i18n="booking.title">Réserver</h2>
+            <p class="section__intro" data-i18n="booking.intro"></p>
+        </header>
+
+        <div class="booker" id="booker">
+            <!-- Progress: a barber pole that fills up step by step -->
+            <div class="progress" id="progress">
+                <div class="progress__meta">
+                    <span id="progressCount"></span>
+                    <span id="progressLabel"></span>
+                </div>
+                <div class="progress__pole" aria-hidden="true"><span id="progressFill"></span></div>
+                <ol class="progress__steps" id="progressSteps">
+                    <li data-step="1"><span>1</span><em data-i18n="step.barber"></em></li>
+                    <li data-step="2"><span>2</span><em data-i18n="step.service"></em></li>
+                    <li data-step="3"><span>3</span><em data-i18n="step.date"></em></li>
+                    <li data-step="4"><span>4</span><em data-i18n="step.time"></em></li>
+                    <li data-step="5"><span>5</span><em data-i18n="step.details"></em></li>
+                    <li data-step="6"><span>6</span><em data-i18n="step.summary"></em></li>
+                </ol>
+            </div>
+
+            <!-- Choices made so far (click to change) -->
+            <div class="chips" id="chips"></div>
+
+            <!-- STEP 1 — Barber -->
+            <div class="step" data-panel="1">
+                <h3 class="step__title" data-i18n="booking.h.barber"></h3>
+                <div class="pick-barbers" id="pickBarbers"></div>
+                <div class="step__nav">
+                    <button type="button" class="btn btn--gold" data-next data-i18n="booking.continue" hidden>Continuer</button>
+                </div>
+            </div>
+
+            <!-- STEP 2 — Service -->
+            <div class="step" data-panel="2" hidden>
+                <h3 class="step__title" data-i18n="booking.h.service"></h3>
+                <div class="pick-services" id="pickServices"></div>
+                <div class="step__nav">
+                    <button type="button" class="btn btn--ghost" data-back data-i18n="booking.back">Retour</button>
+                    <button type="button" class="btn btn--gold" data-next data-i18n="booking.continue" hidden>Continuer</button>
+                </div>
+            </div>
+
+            <!-- STEP 3 — Date -->
+            <div class="step" data-panel="3" hidden>
+                <h3 class="step__title" data-i18n="booking.h.date"></h3>
+                <div class="calendar" id="calendar">
+                    <div class="calendar__head">
+                        <button type="button" class="icon-btn" id="calPrev" data-i18n-aria="cal.prev" aria-label="Mois précédent"><svg class="icon"><use href="#i-left"/></svg></button>
+                        <strong id="calMonth"></strong>
+                        <button type="button" class="icon-btn" id="calNext" data-i18n-aria="cal.next" aria-label="Mois suivant"><svg class="icon"><use href="#i-right"/></svg></button>
+                    </div>
+                    <div class="calendar__weekdays" id="calWeekdays"></div>
+                    <div class="calendar__grid" id="calGrid"></div>
+                    <p class="calendar__note" data-i18n="cal.note"></p>
+                </div>
+                <div class="step__nav">
+                    <button type="button" class="btn btn--ghost" data-back data-i18n="booking.back">Retour</button>
+                    <button type="button" class="btn btn--gold" data-next data-i18n="booking.continue" hidden>Continuer</button>
+                </div>
+            </div>
+
+            <!-- STEP 4 — Time -->
+            <div class="step" data-panel="4" hidden>
+                <h3 class="step__title" data-i18n="booking.h.time"></h3>
+                <p class="step__context" id="timeContext"></p>
+                <div class="legend">
+                    <span><i class="legend__swatch legend__swatch--free"></i><span data-i18n="time.available"></span></span>
+                    <span><i class="legend__swatch legend__swatch--busy"></i><span data-i18n="time.unavailable"></span></span>
+                    <span><i class="legend__swatch legend__swatch--selected"></i><span data-i18n="time.selected"></span></span>
+                </div>
+                <p class="alert" id="timeError" role="alert" hidden></p>
+                <div class="slots" id="slots" aria-live="polite"></div>
+                <div class="step__nav">
+                    <button type="button" class="btn btn--ghost" data-back data-i18n="booking.back">Retour</button>
+                    <button type="button" class="btn btn--gold" data-next data-i18n="booking.continue" hidden>Continuer</button>
+                </div>
+            </div>
+
+            <!-- STEP 5 — Customer details -->
+            <div class="step" data-panel="5" hidden>
+                <h3 class="step__title" data-i18n="booking.h.details"></h3>
+                <form class="form" id="detailsForm" novalidate>
+                    <div class="field">
+                        <label for="fName" data-i18n="form.name">Nom complet</label>
+                        <input id="fName" name="name" type="text" autocomplete="name" required data-i18n-placeholder="form.namePh">
+                        <p class="field__error" id="fNameError"></p>
+                    </div>
+                    <div class="field">
+                        <label for="fPhone" data-i18n="form.phone">Téléphone</label>
+                        <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required data-i18n-placeholder="form.phonePh">
+                        <p class="field__error" id="fPhoneError"></p>
+                    </div>
+                    <div class="field">
+                        <label for="fEmail"><span data-i18n="form.email">E-mail</span> <small>(<span data-i18n="form.optional"></span>)</small></label>
+                        <input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" data-i18n-placeholder="form.emailPh">
+                        <p class="field__error" id="fEmailError"></p>
+                    </div>
+                    <div class="field">
+                        <label for="fNotes"><span data-i18n="form.notes">Remarques</span> <small>(<span data-i18n="form.optional"></span>)</small></label>
+                        <textarea id="fNotes" name="notes" rows="3" data-i18n-placeholder="form.notesPh"></textarea>
+                    </div>
+                    <div class="step__nav">
+                        <button type="button" class="btn btn--ghost" data-back data-i18n="booking.back">Retour</button>
+                        <button type="submit" class="btn btn--gold" data-i18n="booking.continue">Continuer</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- STEP 6 — Summary -->
+            <div class="step" data-panel="6" hidden>
+                <h3 class="step__title" data-i18n="booking.h.summary"></h3>
+                <div class="summary" id="summary"></div>
+                <p class="notice" data-i18n="sum.notice"></p>
+                <p class="alert" id="submitError" role="alert" hidden></p>
+                <div class="step__nav">
+                    <button type="button" class="btn btn--ghost" data-back data-i18n="booking.back">Retour</button>
+                    <button type="button" class="btn btn--gold btn--lg" id="submitBooking" data-i18n="sum.submit">Confirmer la demande de rendez-vous</button>
+                </div>
+            </div>
+
+            <!-- SUCCESS — pending confirmation -->
+            <div class="step success" data-panel="done" hidden>
+                <div class="success__seal"><svg class="icon"><use href="#i-check"/></svg></div>
+                <h3 class="success__title" data-i18n="success.title">Demande envoyée !</h3>
+                <p class="success__text" data-i18n="success.text"></p>
+                <div class="success__ticket" id="successTicket"></div>
+                <p class="success__pending" data-i18n="success.pending"></p>
+                <div class="success__wa">
+                    <p data-i18n="success.whatsappHint"></p>
+                    <a class="btn btn--ghost" id="successWhatsApp" href="#" target="_blank" rel="noopener">
+                        <svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="success.whatsappBtn"></span>
+                    </a>
+                </div>
+                <a href="#home" class="btn btn--gold btn--lg" id="backHome" data-i18n="success.home">Retour à l'accueil</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= GALLERY (filled from js/config.js) ======================= -->
+<section class="section gallery" id="gallery">
+    <div class="container">
+        <header class="section__head reveal">
+            <h2 class="title" data-i18n="gallery.title">Galerie</h2>
+        </header>
+        <div class="gallery__grid reveal" id="galleryGrid"></div>
+    </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section class="section section--deep contact" id="contact">
+    <div class="container contact__grid">
+        <div class="contact__info reveal">
+            <h2 class="title" data-i18n="contact.title">Contact</h2>
+            <p class="section__intro" data-i18n="contact.intro"></p>
+            <a class="btn btn--gold btn--lg contact__wa" id="contactWhatsApp" href="#" target="_blank" rel="noopener">
+                <svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="contact.whatsapp"></span>
+            </a>
+            <ul class="contact__list" id="contactList"></ul>
+            <div class="contact__social" id="contactSocial"></div>
+        </div>
+
+        <div class="hours reveal">
+            <h3 class="hours__title"><svg class="icon"><use href="#i-clock"/></svg><span data-i18n="contact.hours"></span></h3>
+            <table class="hours__table" id="hoursTable"></table>
+        </div>
+
+        <div class="map reveal" id="map">
+            <div class="map__placeholder">
+                <svg class="icon"><use href="#i-pin"/></svg>
+                <p data-i18n="contact.map"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer">
+    <div class="container footer__inner">
+        <img src="logo-wordmark.png" alt="Rapi Coiffure" class="footer__logo" width="327" height="194" loading="lazy">
+        <p>© <span id="year"></span> Rapi Coiffure. <span data-i18n="footer.rights"></span></p>
+    </div>
+</footer>
+
+<!-- Gallery lightbox -->
+<dialog class="lightbox" id="lightbox">
+    <button type="button" class="icon-btn lightbox__close" id="lightboxClose" data-i18n-aria="gallery.close" aria-label="Fermer"><svg class="icon"><use href="#i-close"/></svg></button>
+    <img id="lightboxImg" alt="">
+</dialog>
+
+<!-- PRODUCTION DATABASE (optional) — un-comment when you connect Supabase (see README.md) -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script> -->
+
+<script src="config.js"></script>
+<script src="translations.js"></script>
+<script src="storage.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
